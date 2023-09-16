@@ -40,7 +40,7 @@ podTemplate(cloud: 'kubernetes', label: 'packer', showRawYaml: false, yaml: temp
 node("packer"){
 container("packer"){
 withCredentials([usernamePassword(credentialsId: 'aws-creds', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
-withEnv(["AWS_REGION=${params.region}"]) {
+withEnv(["AWS_REGION=${region}"]) {
 
 
 stage("Checkout SCM") {
