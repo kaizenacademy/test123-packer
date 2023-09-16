@@ -28,12 +28,6 @@ else if (env.BRANCH_NAME == "qa") {
     region = "us-west-1"
 }
 
-properties([
-    parameters([
-        choice(choices: ['us-east-1', 'us-east-2', 'us-west-1', 'us-west-2'], description: 'Enter region', name: 'region')
-        ])
-        ])
-
 
 
 podTemplate(cloud: 'kubernetes', label: 'packer', showRawYaml: false, yaml: template){
