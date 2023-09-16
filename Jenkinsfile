@@ -22,6 +22,18 @@ properties([
         ])
         ])
 
+if (env.BRANCH_NAME == "main") {
+    region = "us-east-1"
+}
+
+else if (env.BRANCH_NAME == "dev") {
+    region = "us-east-2"
+}
+
+else if (env.BRANCH_NAME == "qa") {
+    region = "us-west-1"
+}
+
 podTemplate(cloud: 'kubernetes', label: 'packer', showRawYaml: false, yaml: template){
 node("packer"){
 container("packer"){
