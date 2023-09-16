@@ -23,18 +23,13 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
-variable "jenkins_build_number" {
-  type    = string
-  default = "unknown"
-}
-
 source "amazon-ebs" "example" {
   access_key    = var.aws_access_key
   secret_key    = var.aws_secret_key
   region        = var.aws_region
   instance_type = var.instance_type
   ssh_username  = "ubuntu"
-  ami_name = "my-ami-${var.jenkins_build_number}"
+  ami_name = "my-ami"
 
   source_ami_filter {
     filters = {
